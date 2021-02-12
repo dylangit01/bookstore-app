@@ -6,7 +6,7 @@ const API = axios.create({baseURL: URL})
 
 export const fetchBooks = () => API.get('/')
 
-export const addBook = (newBook) => API.post('/', newBook)
+export const createBook = (newBook) => API.post('/', newBook)
 
 export const updateBook = (id, updatedBook) => API.patch(`/${id}`, updatedBook)
 
