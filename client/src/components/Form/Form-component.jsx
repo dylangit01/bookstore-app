@@ -1,24 +1,39 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import useStyles from './Form-styles'
 import { TextField, Button, Typography, Paper } from '@material-ui/core'
 import CurrencyTextField from '@unicef/material-ui-currency-textfield'
-import { useDispatch } from 'react-redux'
-import { createBook } from '../../react-redux/actions/books-actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { createBook, updateBook } from '../../react-redux/actions/books-actions'
+import { getCurrentId } from '../../react-redux/actions/books-actions'
 
-const Form = ({currentId}) => {
+const Form = () => {
     const classes = useStyles()
-    const [bookData, setBookData] = useState({ bookName: '', price: '', category: '', description: '' })
+    const dispatch = useDispatch()
+    const initialState = {bookName: '', price: '', category: '', description: ''}
+    const [bookData, setBookData] = useState(initialState)
     const [priceError, setPriceError] = useState('')
 
-    const dispatch = useDispatch()
+    const currentId = useSelector((state) => state.currentId)
+
+    const book = useSelector(state => currentId && state.books.find(b => b._id === currentId) )
+
+    useEffect(() => {
+        if(book) setBookData(book)
+    }, [book])
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
-        dispatch(createBook(bookData))
+        if (currentId) {
+            dispatch(updateBook(currentId, bookData))
+        } else {
+            dispatch(createBook(bookData))
+        }
+        clear()
     }
 
     const clear = () => {
+        dispatch(getCurrentId(null))
+        setBookData(initialState)
     }
 
     const onChange = event => {
@@ -27,7 +42,7 @@ const Form = ({currentId}) => {
             case 'price':
                 setBookData({ ...bookData, price: event.target.value })
                 
-                valid = /^(?:0|[1-9]\d*)(?:\.(?!.*000)\d+)?$/.test(event.target.value)
+                valid = /^[0-9]+\.[0-9]+$/.test(event.target.value)
                 if (!valid) {
                     setPriceError('Price is invalid')
                 } else {setPriceError('')}
@@ -46,7 +61,6 @@ const Form = ({currentId}) => {
                     value={bookData.bookName}
                     onChange={event => setBookData({...bookData, bookName: event.target.value})} />
  
-                
                 <CurrencyTextField name='price' id='price' variant='outlined' label='Price' fullWidth required 
                     currencySymbol="$"
                     minimumValue="0"
@@ -68,7 +82,7 @@ const Form = ({currentId}) => {
                 
                 <Button className={classes.buttonSubmit} variant='contained' color='primary' size='large' type='submit' fullWidth
                     disabled={bookData.bookName.length === 0 || bookData.price.length === 0 || bookData.category.length === 0 || priceError.length !== 0}
-                >Create</Button>
+                >Submit</Button>
                 <Button variant='contained' color='secondary' size='small' onClick={clear} fullWidth>Clear</Button>
         
             </form>

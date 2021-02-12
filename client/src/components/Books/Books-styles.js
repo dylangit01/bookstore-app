@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles(theme => ({
+export default makeStyles((theme) => ({
   mainContainer: {
     display: 'flex',
     alignItems: 'center',
@@ -11,4 +11,10 @@ export default makeStyles(theme => ({
   actionDiv: {
     textAlign: 'center',
   },
+  circularProcess: {
+    paddingTop: '200px',
+    height: '400px',
+    display: 'flex',
+    justifyContent: 'center'
+  }
 }));

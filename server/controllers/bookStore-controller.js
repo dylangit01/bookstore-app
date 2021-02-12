@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import BookModel from '../models/book-model.js'
 
 export const getBooks = async (req, res) => {
@@ -29,17 +30,24 @@ export const addBook = async (req, res) => {
     }
 }
 
-export const updateBook = (req, res) => {
+export const updateBook = async (req, res) => {
+    const { id } = req.params
+    const book = req.body
     try {
-        
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({msg: `No book with id: ${id}`})
+        const updatedBook = await BookModel.findByIdAndUpdate(id, { ...book, id }, { new: true })
+        res.json(updatedBook)
     } catch (error) {
         res.status(400).json({msg: error.message})
     }
 }
 
-export const deleteBook = (req, res) => {
+export const deleteBook = async(req, res) => {
+    const {id} = req.params
     try {
-        
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ msg: `No book with id ${id}` })
+        await BookModel.findByIdAndRemove(id)
+        res.json({msg: 'Book deleted successfully'})
     } catch (error) {
         res.status(400).json({msg: error.message});
     }

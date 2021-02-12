@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const URL = 'http://localhost:5000/bookstore'
+const URL = 'http://localhost:5000/bookstore/'
 
 const API = axios.create({baseURL: URL})
 

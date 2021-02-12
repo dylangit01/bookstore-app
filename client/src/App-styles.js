@@ -15,4 +15,7 @@ export default makeStyles(()=> ({
       image: {
         marginLeft: '50px',
       },
+      eventBtn: {
+        marginBottom: '20px'
+      }
 }))
