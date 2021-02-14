@@ -14,12 +14,11 @@ const useStyles = makeStyles(theme => ({
         },
         '& tbody tr:hover': {
             backgroundColor: '#fffbf2',
-            cursor: 'pointer',
         },
     },
 }))
 
-const useTable = (books, headCells) => {
+const useTable = (books, headCells, filterFn) => {
     const classes = useStyles()
 
     const pages = [5, 10, 25]
@@ -68,7 +67,7 @@ const useTable = (books, headCells) => {
     )
 
     const recordsAfterPagingAndSorting = () => {
-        return books.slice(page * rowsPerPage, (page + 1) * rowsPerPage)
+        return filterFn.fn(books).slice(page * rowsPerPage, (page + 1) * rowsPerPage)
     }
 
     return { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting }

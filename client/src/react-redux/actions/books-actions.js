@@ -1,5 +1,5 @@
 import * as api from '../../api/bookAPI'
-import { FETCH_ALL, CREATE, UPDATE, DELETE, GET_ID } from '../constants/actionsTypes'
+import { FETCH_ALL, CREATE, UPDATE, DELETE, GET_ID, POPUP_ON, POPUP_OFF, CLEAR_ID, FORM_CLEANUP } from '../constants/actionsTypes'
 
 export const getBooks = () => async (dispatch) => {
   try {
@@ -37,7 +37,6 @@ export const deleteBook = id => async (dispatch) => {
   }
 }
 
-
 export const getCurrentId = (id) => async (dispatch) => {
   try {
     dispatch({ type: GET_ID, payload: id })
@@ -45,6 +44,19 @@ export const getCurrentId = (id) => async (dispatch) => {
     console.log(error)
   }
 }
+
+export const clearCurrentId = () => dispatch => {
+  dispatch({type: CLEAR_ID})
+}
+
+export const setPopupOn = (bl) => dispatch => {
+  dispatch({type: POPUP_ON, payload:bl})
+}
+
+export const setPopupOff = (bl) => dispatch => {
+  dispatch({type: POPUP_OFF, payload:bl})
+}
+
 
 // export const searchBook = (searchInput) => async(dispatch) => {
 //   try {
