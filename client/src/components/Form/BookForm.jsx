@@ -3,8 +3,7 @@ import useStyles from './Form-styles'
 import { TextField, Button, Typography, Paper } from '@material-ui/core'
 import CurrencyTextField from '@unicef/material-ui-currency-textfield'
 import { useDispatch, useSelector } from 'react-redux'
-import { createBook, updateBook } from '../../react-redux/actions/books-actions'
-import { getCurrentId } from '../../react-redux/actions/books-actions'
+import { createBook, updateBook, getCurrentId } from '../../react-redux/actions/books-actions'
 import Popup from '../../components/Popup/Popup'
 
 const initialValue = { bookName: '', price: '', category: '', description: '' }

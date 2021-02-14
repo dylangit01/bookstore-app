@@ -1,5 +1,5 @@
 import * as api from '../../api/bookAPI'
-import { FETCH_ALL, CREATE, UPDATE, DELETE, GET_ID, POPUP_ON, POPUP_OFF, CLEAR_ID, FORM_CLEANUP } from '../constants/actionsTypes'
+import { FETCH_ALL, CREATE, UPDATE, DELETE, GET_ID, POPUP_ON, POPUP_OFF, CLEAR_ID } from '../constants/actionsTypes'
 
 export const getBooks = () => async (dispatch) => {
   try {

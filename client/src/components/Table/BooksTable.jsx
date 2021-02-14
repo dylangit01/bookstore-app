@@ -4,14 +4,10 @@ import { makeStyles, Paper, TableBody, TableRow, TableCell, Toolbar, InputBase, 
 import { useSelector } from 'react-redux'
 import SearchIcon from '@material-ui/icons/Search'
 import AddIcon from '@material-ui/icons/Add'
-import { setPopupOn } from '../../react-redux/actions/books-actions'
+import { setPopupOn, getCurrentId, deleteBook, } from '../../react-redux/actions/books-actions'
 import { useDispatch } from 'react-redux'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
-import {
-  getCurrentId,
-  deleteBook,
-} from '../../react-redux/actions/books-actions'
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
