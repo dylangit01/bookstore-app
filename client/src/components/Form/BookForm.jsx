@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import useStyles from './Form-styles'
 import { TextField, Button, Typography, Paper } from '@material-ui/core'
-import CurrencyTextField from '@unicef/material-ui-currency-textfield'
 import { useDispatch, useSelector } from 'react-redux'
-import { createBook, updateBook, getCurrentId } from '../../react-redux/actions/books-actions'
+import { createBook, updateBook, getCurrentId, } from '../../react-redux/actions/books-actions'
 import Popup from '../../components/Popup/Popup'
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
 const initialValue = { bookName: '', price: '', category: '', description: '' }
 const validateOnChange = true
@@ -15,7 +15,6 @@ const BookForm = () => {
   const [errors, setErrors] = useState({})
   const dispatch = useDispatch()
   const currentId = useSelector((state) => state.currentId)
-  // const [openPopup, setOpenPopup] = useState(false)
   const popup = useSelector((state) => state.popup)
 
   const book = useSelector(
@@ -32,9 +31,9 @@ const BookForm = () => {
     if ('bookName' in fieldValues)
       temp.bookName = fieldValues.bookName ? '' : 'This field is required.'
     if ('price' in fieldValues)
-      temp.price = /^[0-9]+\.[0-9]+$/.test(fieldValues.price)
+      temp.price = /^(?:0|[1-9]\d*)(?:\.(?!.*000)\d+)?$/.test(fieldValues.price)
         ? ''
-        : 'Price is not valid'
+        : 'Price is incorrect format'
     if ('category' in fieldValues)
       temp.category = fieldValues.category ? '' : 'This field is required'
 
@@ -75,10 +74,7 @@ const BookForm = () => {
 
   return (
     <>
-      <Popup
-        title= {currentId ? 'Updating' : 'Creating'}
-        openPopup={popup}
-      >
+      <Popup title={currentId ? 'Updating' : 'Creating'} openPopup={popup}>
         <Paper className={classes.paper}>
           <form
             autoComplete='off'
@@ -86,9 +82,7 @@ const BookForm = () => {
             className={`${classes.root} ${classes.form}`}
             onSubmit={handleSubmit}
           >
-            <Typography variant='h6'>
-              
-            </Typography>
+            <Typography variant='h6'></Typography>
 
             <TextField
               name='bookName'
@@ -103,20 +97,19 @@ const BookForm = () => {
               })}
             />
 
-            <CurrencyTextField
+            <TextField
+              InputProps={{
+                startAdornment: <AttachMoneyIcon />,
+              }}
               name='price'
               variant='outlined'
               label='Price'
               fullWidth
-              currencySymbol='$'
-              minimumValue='0'
-              outputFormat='string'
-              decimalCharacter='.'
-              digitGroupSeparator=','
               value={values.price}
               onChange={handleChange}
               {...(errors.price && { error: true, helperText: errors.price })}
             />
+
             <TextField
               name='category'
               variant='outlined'

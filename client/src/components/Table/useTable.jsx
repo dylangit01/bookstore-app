@@ -8,6 +8,9 @@ const useStyles = makeStyles(theme => ({
             fontWeight: '600',
             color: theme.palette.primary.main,
             backgroundColor: '#c9cbff',
+            overflowX: 'auto',
+            whiteSpace: 'nowrap',
+            // textAlign: 'center !important',
         },
         '& tbody td': {
             fontWeight: '300',
@@ -16,6 +19,15 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: '#fffbf2',
         },
     },
+    paginationMb: {
+        '@media (max-width: 900px)': {
+            width: '110vw'
+        },
+        '@media (max-height: 400px)': {
+            width: '90vw'
+          },
+    }
+    
 }))
 
 const useTable = (books, headCells, filterFn) => {
@@ -33,7 +45,7 @@ const useTable = (books, headCells, filterFn) => {
     
     const TblHead = () => {
         return (
-            <TableHead>
+            <TableHead >
                 <TableRow>
                     {
                         headCells.map(headcell => (
@@ -56,6 +68,7 @@ const useTable = (books, headCells, filterFn) => {
 
     const TblPagination = () => (
         <TablePagination
+            className={classes.paginationMb}
             component='div'
             page = {page}
             rowsPerPageOptions={pages}

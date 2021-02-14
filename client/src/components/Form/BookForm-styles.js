@@ -9,6 +9,10 @@ export default makeStyles(theme => ({
     },
     pageContent: {
         margin: theme.spacing(5),
-        padding: theme.spacing(3)
+        padding: theme.spacing(3),
+        // '@media (max-width: 900px)': {
+        //     margin: theme.spacing(1),
+        //     padding: theme.spacing(1),
+        // }
     }
 }))

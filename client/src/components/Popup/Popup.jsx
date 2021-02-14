@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     position: 'absolute',
     top: theme.spacing(5),
+    '@media (max-width: 900px)': {
+      padding: theme.spacing(1),
+  }
   },
   dialogTitle: {
     paddingRight: '0px',
@@ -21,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Popup = ({ title, children, openPopup, setOpenPopup }) => {
+const Popup = ({ title, children, openPopup }) => {
   const classes = useStyles()
   const dispatch= useDispatch()
   return (

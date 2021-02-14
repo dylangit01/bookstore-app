@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Container, AppBar, Typography, Grow, Grid, CssBaseline, } from '@material-ui/core'
 import bookstore from './images/book_store.png'
 // import Form from './components/Form/Form-component'
@@ -6,7 +6,6 @@ import bookstore from './images/book_store.png'
 import useStyles from './App-styles'
 import { useDispatch } from 'react-redux'
 import { getBooks } from './react-redux/actions/books-actions'
-// import { useSelector } from 'react-redux'
 import BookForm from './components/Form/BookForm'
 import BooksTable from './components/Table/BooksTable'
 
