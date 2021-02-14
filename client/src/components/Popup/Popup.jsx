@@ -4,7 +4,6 @@ import CloseIcon from '@material-ui/icons/Close'
 import { setPopupOff, clearCurrentId } from '../../react-redux/actions/books-actions'
 import { useDispatch } from 'react-redux'
 
-
 const useStyles = makeStyles((theme) => ({
   dialogWrapper: {
     padding: theme.spacing(2),
