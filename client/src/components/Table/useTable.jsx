@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: '#c9cbff',
             overflowX: 'auto',
             whiteSpace: 'nowrap',
-            // textAlign: 'center !important',
+            textAlign: 'center !important',
         },
         '& tbody td': {
             fontWeight: '300',
@@ -26,6 +26,9 @@ const useStyles = makeStyles(theme => ({
         '@media (max-height: 400px)': {
             width: '90vw'
           },
+    },
+    tableHR: {
+
     }
     
 }))
