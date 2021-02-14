@@ -1,5 +1,5 @@
 import * as api from '../../api/bookAPI'
-import { FETCH_ALL, CREATE, UPDATE, DELETE, GET_ID, } from '../constants/actionsTypes'
+import { FETCH_ALL, CREATE, UPDATE, DELETE, GET_ID } from '../constants/actionsTypes'
 
 export const getBooks = () => async (dispatch) => {
   try {
@@ -38,12 +38,18 @@ export const deleteBook = id => async (dispatch) => {
 }
 
 
-
 export const getCurrentId = (id) => async (dispatch) => {
   try {
-    const action = { type: GET_ID, payload: id }
-    dispatch(action)
+    dispatch({ type: GET_ID, payload: id })
   } catch (error) {
     console.log(error)
   }
 }
+
+// export const searchBook = (searchInput) => async(dispatch) => {
+//   try {
+//     dispatch({type: SEARCH_BOOK, payload: searchInput})
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }

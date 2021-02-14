@@ -13,7 +13,6 @@ const Book = ({book}) => {
 
     return (
         <Card className={classes.card}>
-
             <CardMedia className={classes.media} image={readbook} />
             <div className={classes.overlay}>
                 <Typography variant="h5">{book.bookName}</Typography>

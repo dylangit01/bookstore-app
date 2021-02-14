@@ -6,6 +6,10 @@ export default makeStyles({
     paddingTop: '30%',
     backgroundColor: 'rgba(0, 0, 0, .5)',
     backgroundBlendMode: 'darken',
+    '@media (max-width: 900px)': {
+      paddingTop: '55%',
+      paddingBottom: '10%'
+    }
   },
   border: {
     border: 'solid',
@@ -41,6 +45,9 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
     marginTop: '20px',
+    '@media (max-width: 900px)': {
+      flexDirection: 'column',
+    }
   },
   title: {
     padding: '0 16px',

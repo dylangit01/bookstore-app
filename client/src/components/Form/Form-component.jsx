@@ -9,8 +9,8 @@ import { getCurrentId } from '../../react-redux/actions/books-actions'
 const Form = () => {
     const classes = useStyles()
     const dispatch = useDispatch()
-    const initialState = {bookName: '', price: '', category: '', description: ''}
-    const [bookData, setBookData] = useState(initialState)
+    const initialValue = {bookName: '', price: '', category: '', description: ''}
+    const [bookData, setBookData] = useState(initialValue)
     const [priceError, setPriceError] = useState('')
 
     const currentId = useSelector((state) => state.currentId)
@@ -33,7 +33,7 @@ const Form = () => {
 
     const clear = () => {
         dispatch(getCurrentId(null))
-        setBookData(initialState)
+        setBookData(initialValue)
     }
 
     const onChange = event => {

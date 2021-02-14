@@ -13,6 +13,9 @@ const booksReducer = (books = [], action) => {
 
     case DELETE:
       return books.filter(book => book._id !== action.payload)
+    
+    // case SEARCH_BOOK:
+    //   return books.filter(book => book.bookName.toLowerCase().includes(action.payload.toLowerCase()))
 
     default:
       return books

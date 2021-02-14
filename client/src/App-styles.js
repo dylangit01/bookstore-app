@@ -11,9 +11,15 @@ export default makeStyles(()=> ({
       },
       heading: {
         color: 'rgba(0,183,255, 1)',
+        '@media (max-width: 900px)': {
+          fontSize: '50px'
+        }
       },
       image: {
-        marginLeft: '50px',
+        marginLeft: '20px',
+        '@media (max-width: 900px)': {
+          height: '35px'
+        }
       },
       eventBtn: {
         marginBottom: '20px'
