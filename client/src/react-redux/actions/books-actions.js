@@ -57,7 +57,7 @@ export const setPopupOff = (bl) => dispatch => {
   dispatch({type: POPUP_OFF, payload:bl})
 }
 
-
+// todo: backspace searching not working...
 // export const searchBook = (searchInput) => async(dispatch) => {
 //   try {
 //     dispatch({type: SEARCH_BOOK, payload: searchInput})
